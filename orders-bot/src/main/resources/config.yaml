@@ -1,0 +1,6 @@
+host: develop2.symphony.com
+
+bot:
+  username: sergiogq-orders-bot
+  privateKey:
+    path: rsa/privatekey.pem
