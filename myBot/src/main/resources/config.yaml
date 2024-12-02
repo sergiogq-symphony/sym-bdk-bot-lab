@@ -1,0 +1,6 @@
+host: data-purge-validation1.on.qa.symphony.com
+
+bot:
+  username: sergiogq-myBot
+  privateKey:
+    path: rsa/privatekey.pem

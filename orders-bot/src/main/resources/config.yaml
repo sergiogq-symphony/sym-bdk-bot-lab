@@ -1,4 +1,4 @@
-host: develop2.symphony.com
+host: data-purge-validation.on.qa.symphony.com
 
 bot:
   username: sergiogq-orders-bot

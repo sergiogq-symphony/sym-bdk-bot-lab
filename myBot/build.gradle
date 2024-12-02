@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation platform('org.finos.symphony.bdk:symphony-bdk-bom:2.6.0')
+
+    implementation 'org.finos.symphony.bdk:symphony-bdk-core'
+    runtimeOnly 'org.finos.symphony.bdk:symphony-bdk-template-freemarker'
+    runtimeOnly 'org.finos.symphony.bdk:symphony-bdk-http-jersey2'
+
+    implementation 'org.slf4j:slf4j-api'
+    runtimeOnly 'ch.qos.logback:logback-classic'
+}
+
+application {
+    mainClass = 'com.sergiogq.myBot.BotApplication'
+}
+
+version = '0.0.1-SNAPSHOT'

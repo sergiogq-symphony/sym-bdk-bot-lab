@@ -1,4 +1,4 @@
-package com.sergiogq.ordersbot;
+package com.sergiogq.myBot;
 
 import com.symphony.bdk.core.activity.ActivityMatcher;
 import com.symphony.bdk.core.activity.form.FormReplyActivity;
@@ -7,9 +7,6 @@ import com.symphony.bdk.core.activity.model.ActivityInfo;
 import com.symphony.bdk.core.activity.model.ActivityType;
 import com.symphony.bdk.core.service.message.MessageService;
 import com.symphony.bdk.core.service.message.model.Message;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class GifFormActivity extends FormReplyActivity<FormReplyContext> {
 
@@ -30,15 +27,6 @@ public class GifFormActivity extends FormReplyActivity<FormReplyContext> {
     final String category = context.getFormValue("category");
     final String message = "<messageML>Received category '" + category + "'</messageML>";
     this.messageService.send(context.getSourceEvent().getStream(), Message.builder().content(message).build());
-
-    final String message2 = "<messageML>/gif2</messageML>";
-
-    ZonedDateTime utcTime = ZonedDateTime.now(ZoneId.of("UTC"));
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss 'UTC'");
-    String formattedTime = utcTime.format(formatter);
-    System.out.println("The /gif2 was send at: " + formattedTime);
-
-    this.messageService.send(context.getSourceEvent().getStream(), Message.builder().content(message2).build());
   }
 
   @Override
