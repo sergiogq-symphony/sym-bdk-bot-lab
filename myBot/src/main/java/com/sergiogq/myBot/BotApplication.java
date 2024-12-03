@@ -8,9 +8,6 @@ import com.symphony.bdk.gen.api.model.V4UserJoinedRoom;
 import com.symphony.bdk.template.api.Template;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static com.symphony.bdk.core.config.BdkConfigLoader.loadFromClasspath;
 import static com.symphony.bdk.core.activity.command.SlashCommand.slash;
@@ -30,10 +27,7 @@ public class BotApplication {
 
     // Register a "slash" activity
     bdk.activities().register(slash("/gif2", false, context -> {
-        ZonedDateTime utcTime = ZonedDateTime.now(ZoneId.of("UTC"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss 'UTC'");
-        String formattedTime = utcTime.format(formatter);
-        System.out.println("The /gif2 was received at: " + formattedTime);
+        System.out.println("The /gif2 with identifier "+ context.getMessageId() +" was received at: " + System.currentTimeMillis());
 
         Template template = bdk.messages().templates().newTemplateFromClasspath("/templates/gif.ftl");
         bdk.messages().send(context.getStreamId(), Message.builder().template(template).build());

@@ -7,9 +7,7 @@ import com.symphony.bdk.core.activity.model.ActivityInfo;
 import com.symphony.bdk.core.activity.model.ActivityType;
 import com.symphony.bdk.core.service.message.MessageService;
 import com.symphony.bdk.core.service.message.model.Message;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import com.symphony.bdk.gen.api.model.V4Message;
 
 public class GifFormActivity extends FormReplyActivity<FormReplyContext> {
 
@@ -33,12 +31,9 @@ public class GifFormActivity extends FormReplyActivity<FormReplyContext> {
 
     final String message2 = "<messageML>/gif2</messageML>";
 
-    ZonedDateTime utcTime = ZonedDateTime.now(ZoneId.of("UTC"));
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss 'UTC'");
-    String formattedTime = utcTime.format(formatter);
-    System.out.println("The /gif2 was send at: " + formattedTime);
-
-    this.messageService.send(context.getSourceEvent().getStream(), Message.builder().content(message2).build());
+    long currentTime = System.currentTimeMillis();
+    V4Message sendMessage = this.messageService.send(context.getSourceEvent().getStream(), Message.builder().content(message2).build());
+    System.out.println("The /gif2 with identifier " + sendMessage.getMessageId() + " was send at: " + currentTime);
   }
 
   @Override
