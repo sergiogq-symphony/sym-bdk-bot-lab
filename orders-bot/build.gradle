@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
 
-    implementation platform('org.finos.symphony.bdk:symphony-bdk-bom:2.6.0')
+    implementation platform('org.finos.symphony.bdk:symphony-bdk-bom:2.14.3')
 
     implementation 'org.finos.symphony.bdk:symphony-bdk-core'
     runtimeOnly 'org.finos.symphony.bdk:symphony-bdk-template-freemarker'
